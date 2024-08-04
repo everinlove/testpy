@@ -1,0 +1,19 @@
+name: Run Python Code
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-code:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # 请根据你的Python版本选择
+    - name: Install dependencies
+      run: pip install requests
+    - name: Run Python script
+      run: python ./test.py
