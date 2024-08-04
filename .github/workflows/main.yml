@@ -8,12 +8,14 @@ jobs:
   run-code:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - uses: actions/checkout@v3  # 使用新的actions/checkout@v3版本
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v3
       with:
-        python-version: '3.x' # 请根据你的Python版本选择
+        python-version: '3.8'  # 确保使用正确的Python版本
     - name: Install dependencies
-      run: pip install requests
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests  # 安装任何需要的依赖
     - name: Run Python script
       run: python ./test.py
